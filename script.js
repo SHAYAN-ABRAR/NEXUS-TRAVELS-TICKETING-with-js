@@ -1,4 +1,4 @@
-// ---------------------------------------------------------------- 
+
 function setElementValueById(elementId, value) {
     document.getElementById(elementId).innerText = value;
   }
@@ -15,9 +15,9 @@ function setElementValueById(elementId, value) {
     const inputValue = input.value;
     return inputValue;
   }
-  // --------------------------------------------------------------------- 
   
-  // ------------------------------------------------------------------------
+  
+
   const allBtn = document.querySelectorAll('#add-seat');
   let count1 = 0;
   let count2 = 40;
@@ -110,4 +110,4 @@ function setElementValueById(elementId, value) {
           alert("Invalid Coupon");
       }
     });
-  // --------------------------------------------------------------------------------------------------
+  
