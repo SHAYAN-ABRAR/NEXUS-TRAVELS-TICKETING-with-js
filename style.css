@@ -1,0 +1,15 @@
+.font-raleway {
+    font-family: "Raleway", sans-serif;
+}
+
+.font-inter {
+    font-family: "Inter", sans-serif;
+}
+
+.bg-banner-img {
+    background-image: url("../images/banner.png"),
+        linear-gradient(to top,
+            rgba(0, 0, 0, 0.565),
+            rgba(255, 255, 255, 0.05));
+    background-blend-mode: multiply;
+}
