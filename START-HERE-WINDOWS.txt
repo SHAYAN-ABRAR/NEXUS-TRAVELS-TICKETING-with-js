@@ -1,0 +1,49 @@
+NEXUS TRAVELS REDESIGN — WINDOWS POWERSHELL
+
+Download these two supplied files into the same folder (normally Downloads):
+  Nexus-Travels-Redesign.zip
+  Publish-Nexus-Redesign.ps1
+
+The script supports Windows PowerShell 5.1 and PowerShell 7.
+It does not use Bash's && separator or the unzip command.
+Git must be installed. GitHub may ask you to sign in when pushing.
+
+OPTION 1 — Prepare a local review folder, without committing or pushing:
+
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File "$env:USERPROFILE\Downloads\Publish-Nexus-Redesign.ps1"
+
+The script prints the folder to open. Open its index.html to preview, or run
+python -m http.server 8000 from that folder and visit http://localhost:8000.
+It also prints the commands to push that exact local branch after reviewing.
+
+OPTION 2 — Create and upload a new review branch:
+
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File "$env:USERPROFILE\Downloads\Publish-Nexus-Redesign.ps1" -Push
+
+The script opens GitHub's pull-request comparison page. Review the changes,
+create the pull request, and merge it into main when satisfied. It does not
+merge, force-push, or change your Pages settings. Each run uses a new folder
+and branch, leaving existing checkouts untouched.
+
+The ExecutionPolicy flag applies only to that PowerShell process. It does not
+change your machine's saved execution policy.
+
+CUSTOM DOWNLOAD LOCATION
+
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File "D:\YourFolder\Publish-Nexus-Redesign.ps1" -ZipPath "D:\YourFolder\Nexus-Travels-Redesign.zip" -Push
+
+IF SOMETHING FAILS
+
+The helper stops at the failed step. Send the exact error output for help.
+If main has changed from revision 7d9f7b062c4c491a05bfc363f67aa7ddb789f7f0,
+the helper stops before copying website files so newer work is not overwritten.
+If Git needs your author identity or GitHub authentication, configure your own
+identity/sign-in; no credentials are stored in this package.
+
+AFTER MERGING
+
+Check the repository's Actions tab for a successful Pages deployment, then:
+https://shayan-abrar.github.io/NEXUS-TRAVELS-TICKETING-with-js/
+
+Use Ctrl+F5 if an older copy is cached. Pages should publish main / (root).
+The site needs no npm install, build command, backend, or authentication.
