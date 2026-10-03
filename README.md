@@ -1,79 +1,75 @@
-# NEXUS Travels
+# Nexus Travels
 
-A bus ticket booking page for a Dhaka to Sylhet coach: pick up to four seats, apply a coupon and confirm, all in plain JavaScript.
+**Less rush. More journey.** A responsive, browser-only bus booking demo for the Dhaka–Sylhet route, designed and built for Shayan Abrar.
 
-**Live site:** <https://shayan-abrar.github.io/NEXUS-TRAVELS-TICKETING-with-js/>
+[Live website](https://shayan-abrar.github.io/NEXUS-TRAVELS-TICKETING-with-js/) · [Booking preview](screenshots/booking.png) · [Mobile preview](screenshots/mobile.jpg)
 
-<p align="center">
-  <img src="screenshots/tour.gif" width="800" alt="Animated tour through the home page, the coupon offers and trip details, the seat map with four seats and a coupon applied, and the booking success message">
-</p>
+![Nexus Travels homepage: an ivory and blue editorial layout with a scenic coach image](screenshots/home.jpg)
 
-<table>
-  <tr>
-    <td align="center" width="25%"><a href="screenshots/home.jpg"><img src="screenshots/home.jpg" width="190" alt="Home page hero reading End-to-End Travel with NEXUS TRAVELS, a Buy Tickets Now button and three stat cards"></a><br><sub><b>Home</b> · hero and stats</sub></td>
-    <td align="center" width="25%"><a href="screenshots/offers-trip.jpg"><img src="screenshots/offers-trip.jpg" width="190" alt="Coupon cards for NEW15 and Couple 20 above the Nexus Express trip card with the Dhaka to Sylhet route, a 9:00 PM departure and a 550 taka fare"></a><br><sub><b>Offers</b> · trip details</sub></td>
-    <td align="center" width="25%"><a href="screenshots/booking.png"><img src="screenshots/booking.png" width="190" alt="Seat map with C1, C2, D1 and D2 selected in green and a summary showing a total of 2200, a discount of 330 and a grand total of 1870"></a><br><sub><b>Booking</b> · 4 seats, NEW15</sub></td>
-    <td align="center" width="25%"><a href="screenshots/success.png"><img src="screenshots/success.png" width="190" alt="Success message thanking the passenger for booking, shown over the filled-in booking form"></a><br><sub><b>Confirmation</b></sub></td>
-  </tr>
-</table>
+## The experience
 
-Booking a bus seat online comes down to a few steps: check the trip, pick seats, see the price and confirm. This page runs that whole flow in the browser with one script. Every seat click updates the seat count, the fare summary and the totals, and simple checks decide when the coupon and **Next** buttons unlock, which makes it a compact example of managing UI state with plain DOM code.
+- A complete visual redesign: ivory backgrounds, blue accents, local Inter and Instrument Serif fonts, bespoke seat controls, and two AI-generated campaign photographs.
+- One Dhaka–Sylhet route, coach 009, AC Business class, 9:00 PM departure and a sample next-day 8:00 AM arrival.
+- A journey date picker that uses Bangladesh time, allows dates within the next 90 days, and prevents selecting an already-departed same-day service.
+- All 40 original seats, rows A–J, with a maximum of four per booking. Select, deselect, remove individual seats, or clear the selection.
+- The original BDT 550 fare. Four seats unlock **NEW15** (15% off) or **Couple 20** (20% off). Codes tolerate casing and spaces; only one applies at a time. Removing a seat removes an ineligible discount.
+- Live fare totals, a sticky desktop booking summary, and a mobile total bar.
+- Required name and Bangladesh mobile-number validation, with optional email. Both `01XXXXXXXXX` and `+8801XXXXXXXXX` work, including Bengali digits.
+- A clear confirmation dialog, local **My tickets**, text-ticket downloads, and removable demo tickets.
+- Draft date, seat and applied-coupon recovery after refreshing, when browser storage is available. Booked seats are tracked per date on this browser. Tabs reconcile local ticket changes.
+- Working mobile navigation, FAQs, booking terms, cancellation information, and privacy controls.
+- Keyboard seat navigation with arrow keys, Home and End; visible focus styles; live status messages; native modal dialogs; and reduced-motion support.
 
-## Quick Start
+![Seat map and booking summary with Couple 20 applied](screenshots/booking.png)
 
-```bash
+## Run locally
+
+No dependency installation, build command, account, API key, or database is needed.
+
+```powershell
 git clone https://github.com/SHAYAN-ABRAR/NEXUS-TRAVELS-TICKETING-with-js.git
-cd NEXUS-TRAVELS-TICKETING-with-js
-python3 -m http.server 8000
+Set-Location NEXUS-TRAVELS-TICKETING-with-js
+python -m http.server 8000
 ```
 
-Open <http://localhost:8000>. On Windows, use `python` instead of `python3`. Opening `index.html` directly in a browser works too. Tailwind CSS, DaisyUI and the Raleway font load from the internet.
+Open `http://localhost:8000`. On Linux/macOS use `python3`. The plain HTML, CSS and deferred JavaScript can also be previewed by opening `index.html` directly; use the local server to match website storage behavior more closely.
 
-## Features
+## GitHub Pages
 
-- **Landing page:** a hero whose **Buy Tickets Now** button jumps to the seat map, three stat cards and two coupon offer cards.
-- **Trip card:** the Nexus Express coach, the Dhaka to Sylhet route, a 9:00 PM departure, boarding and dropping points and a 550-taka fare per seat.
-- **Seat map:** 40 seats in rows A to J. A selected seat turns green, can't be clicked again and lowers the "Seats left" count.
-- **Four-seat limit:** trying a fifth seat shows the alert "You can only select four seats and not more".
-- **Fare summary:** each seat is listed with its class and fare, and **Total Price** and **Grand Total** update on every click.
-- **Coupons:** **Apply** unlocks once four seats are selected. `NEW15` takes 15% off and `Couple 20` takes 20% off. Any other code shows "Invalid Coupon". A valid code adds a discount row and hides the coupon field.
-- **Confirmation:** after a seat is selected, typing a phone number enables **Next**, which opens a success message in a DaisyUI modal.
-- **Phone layout:** below 1,024px, the sections stack into one column, the seat rows wrap and the navigation moves into a dropdown menu.
+Publish **main / (root)** using GitHub Pages. All asset paths are relative, so the repository subpath works without a build step. After merging a redesign branch, wait for the Pages deployment to finish in Actions, then refresh the live site. Use Ctrl+F5 if old assets remain cached.
 
-## Usage Example
+See `START-HERE-WINDOWS.txt` for the supplied ZIP and PowerShell helper workflow. The package was prepared from main revision `7d9f7b062c4c491a05bfc363f67aa7ddb789f7f0`.
 
-Select seats C1, C2, D1 and D2. The summary lists four seats at 550 taka each, and **Total Price** becomes BDT 2200. Enter `NEW15` and click **Apply**: the discount row shows BDT 330 and **Grand Total** drops to BDT 1870. With `Couple 20` instead, the discount is 440 and the grand total 1760.
+## Demo scope and privacy
 
-The fare isn't hard-coded in the script. `script.js` reads it from this element in `index.html`, so changing the number changes every total:
+This is a portfolio demonstration, not a live transport service. No payment is processed, no real ticket is issued, and no email is sent. The original route, fare and schedule remain sample information. The scenic photos are AI-generated illustrations, not documentary images of an operator or guaranteed views on the overnight service.
 
-```html
-<h3 class="text-xl font-semibold text-black"><span id="seat-per-pay">550</span> Taka</h3>
-```
+Local storage uses the `nexus-travels-v2` key. It stores the draft journey and demo tickets, including passenger name. **Phone and email are never persisted or included in downloads.** Tickets belong to this browser and origin; they do not synchronize between devices or browsers. Browser data clearing removes them. If storage is unavailable, booking still works for the current session and tickets can be downloaded. Separate-tab updates are reconciled, but local storage is not a server reservation system and cannot guarantee cross-tab atomic locking.
 
-## Limitations
+The page uses no analytics, trackers, CDN scripts, remote fonts, authentication, or payment integrations. Existing original image assets, the unreferenced `utility.js` and `tailwind.config.js`, and the legacy `screenshots/tour.gif` are retained for repository continuity. The current page loads only `style.css` and `script.js`; it no longer depends on Tailwind or DaisyUI.
 
-- Nothing is saved or sent. **Next** only opens the success message, which mentions a confirmation email that is never sent, and the selected seats stay on the page after **Continue**.
-- Only the phone number is checked, although the name field is also marked as required. If you type the phone number before choosing a seat, type in that field again to enable **Next**.
-- Coupon codes are case-sensitive, and the "use by January 2025" dates on the offer cards aren't checked. The summary lists every seat as "Economy", while the trip card says "Business Class".
-- Between 1,024px and 1,279px wide, the footer divider (fixed at 1,200px) causes a horizontal scrollbar. On screens narrower than 416px, such as most phones, the discount row (fixed at 400px) does the same once a coupon is applied.
-- `index.html` doesn't load `style.css`, `utility.js` or `tailwind.config.js`, and the navigation, **See Our All Offers** and footer links don't lead anywhere.
+## Files
 
-## Tech Stack
+| Path | Purpose |
+| --- | --- |
+| `index.html` | Landing page, booking form, dialogs and accessible content |
+| `style.css` | Responsive design system and component styling |
+| `script.js` | Seat, coupon, date, validation and local ticket behavior |
+| `images/journey-*.webp` | Responsive hero image |
+| `images/sylhet-*.webp` | Responsive destination image |
+| `images/CAMPAIGN-IMAGES.md` | Image provenance and complete generation prompts |
+| `assets/fonts/` | Local fonts, Bengali glyph support and OFL licenses |
+| `screenshots/` | Current desktop/mobile previews; legacy tour retained |
+| `DESIGN_REVIEW.md` | Changes, preserved behavior and verification record |
 
-- HTML5
-- Tailwind CSS (Play CDN) and DaisyUI 4.7.2: navbar, buttons, dropdown menu and modal
-- Vanilla JavaScript in `script.js`: DOM updates and event listeners
-- Google Fonts: Raleway
-- Hosted on GitHub Pages
+## Verification
 
-## Contributing
+22 Chromium browser checks passed, including pricing, both coupons, required fields, ticket persistence and deletion, date handling, corrupt/blocked storage, HTML-safe passenger names, keyboard interactions, and a complete mobile booking. No horizontal overflow at widths from 320 to 1920 pixels. The repository subpath was tested with no page errors, failed assets, or external network dependencies.
 
-Suggestions and bug reports are welcome. Please [open an issue](https://github.com/SHAYAN-ABRAR/NEXUS-TRAVELS-TICKETING-with-js/issues). Please read the license note below before reusing any code or images.
+See `DESIGN_REVIEW.md` for the complete verification record. Other browser engines and the Windows publishing helper were not executed in this Linux environment.
 
 ## License
 
-This repository doesn't have a license yet, so it doesn't grant anyone permission to reuse or redistribute its code or images. Please ask before reusing any part of it.
-
----
+The original repository does not declare a project-wide license. This redesign does not add one. Please ask Shayan Abrar before reusing repository code or assets. Included font licenses are in `assets/fonts/`. AI campaign-image provenance is documented separately.
 
 Built by **Shayan Abrar** · [GitHub](https://github.com/SHAYAN-ABRAR) · [LinkedIn](https://www.linkedin.com/in/shayan-abrar/)
